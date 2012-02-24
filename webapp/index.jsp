@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<jsp:useBean id="controllanc" scope="request" class="control.ControlLanc" />
+<<jsp:setProperty property="*" name="controllanc"/> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0071)https://grandcentral.cloudbees.com/?josso_assertion_id=066BD2814ED7EE17 -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -653,12 +655,15 @@ html {
 								<ul id="index-list">
 									<div class="left box color-box">
 
-										<sql:query dataSource="jdbc/simplefinance" var="rst"
+										<c:forEach items="${controllanc}" var="row">
+											<li>${row.day}-${row.month}-${row.year} <span class="text-m">${row.value}</span> ${row.desc}</li>
+										</c:forEach>
+<%--  										<sql:query dataSource="jdbc/simplefinance" var="rst"
 											scope="request">select lanc_id, lanc_day, lanc_month, lanc_year, lanc_value, lanc_desc from lanc order by lanc_year, lanc_month, lanc_day </sql:query>
 										<c:forEach items="${rst.rows}" var="row">
 											<li>${row.lanc_day}-${row.lanc_month}-${row.lanc_year} <span class="text-m">${row.lanc_value}</span> ${row.lanc_desc}</li>
 										</c:forEach>
-
+ --%> 
 									</div>
 								</ul></td>
 						</tr>

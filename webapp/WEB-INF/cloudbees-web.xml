@@ -5,9 +5,11 @@
         <param-name>application.environment</param-name>
         <param-value>prod</param-value>
     </context-param>
-	<resource name="jdbc/simplefinance" auth="Container" type="javax.sql.DataSource">
+ 	<resource name="jdbc/simplefinance" auth="Container" type="javax.sql.DataSource">
  		<param name="username" value="simplefinance" />
  		<param name="password" value="123" />
  		<param name="url" value="jdbc:cloudbees://simplefinance" />
+ 		<!-- <param name="url" value="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/simplefinance?autoReconnect=true" /> -->
+ 		
 	</resource>    
-</cloudbees-web-app>
+ </cloudbees-web-app>

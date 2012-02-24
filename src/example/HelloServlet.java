@@ -5,9 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.naming.*;
-import javax.sql.*;
-import java.sql.*;
+
+import util.Factory;
 
 /**
  * Hello world!
@@ -53,7 +52,10 @@ public class HelloServlet extends HttpServlet {
 			desc += " "+aux[i];
 		}
 		
-		Context ctx;
+		
+		Factory.getControlLanc().save(day,month,year,value,desc);
+		
+/*		Context ctx;
 		try {
 			ctx = new InitialContext();
 			DataSource ds = (DataSource) ctx
@@ -75,7 +77,7 @@ public class HelloServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+*/		
 		resp.sendRedirect("http://simplefinance.tarcisioads.cloudbees.net/");
 	}
 }
